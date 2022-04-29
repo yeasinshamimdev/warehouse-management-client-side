@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import CustomLink from '../CustomLink/CustomLink';
 
 const Header = () => {
     return (
         <div>
-            <nav className="relative w-full flex flex-wrap items-center justify-between py-3 bg-slate-100 text-black shadow-lg navbar navbar-expand-lg navbar-light">
+            <nav className="relative w-full flex flex-wrap items-center justify-between py-3 bg-slate-200 text-black shadow-lg navbar navbar-expand-lg navbar-light">
                 <div className="container-fluid w-full flex flex-wrap md:items-center justify-between md:px-10 px-4">
                     <div className='hidden md:block'>
                         <Link className="text-xl pr-2 font-semibold font-mono" to='/'>Sports Gear Warehouse </Link>
@@ -30,17 +31,13 @@ const Header = () => {
                         <div className="collapse navbar-collapse flex-grow items-center" id="navbarSupportedContent1">
                             <ul className="navbar-nav font-semibold flex flex-col pl-0 list-style-none mr-auto">
                                 <li className="nav-item p-2">
-                                    <Link className="nav-link " to='/'>Dashboard</Link>
+                                    <CustomLink className="nav-link opacity-80 hover:opacity-100 p-0" to='/home'>Dashboard</CustomLink>
                                 </li>
                                 <li className="nav-item p-2">
-                                    <Link className="nav-link opacity-60 hover:opacity-80 focus:opacity-80 p-0"
-                                        to='/'
-                                    >Team</Link >
+                                    <CustomLink className="nav-link opacity-80 hover:opacity-100 p-0" to='/inventory'>Team</CustomLink >
                                 </li>
                                 <li className="nav-item p-2">
-                                    <Link className="nav-link  opacity-60 hover:opacity-80 focus:opacity-80 p-0"
-                                        to='/'
-                                    >Projects</Link >
+                                    <CustomLink className="nav-link opacity-80 hover:opacity-100 p-0" to='/blog'>Projects</CustomLink >
                                 </li>
                             </ul>
                         </div>

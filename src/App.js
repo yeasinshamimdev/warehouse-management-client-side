@@ -1,14 +1,15 @@
 import './App.css';
-import { Routes } from 'react-router-dom';
-import Header from './components/Header/Header';
+import { Route, Routes } from 'react-router-dom';
+import Header from './components/Shared/Header/Header';
+import Home from './components/Pages/Home/Home';
 
 function App() {
   return (
-    <div >
+    <div className='bg-slate-100'>
       <Header />
-      <h1>Hello</h1>
       <Routes>
-
+        <Route path='/' element={<Home />}></Route>
+        <Route path='/home' element={<Home />}></Route>
       </Routes>
     </div>
   );
