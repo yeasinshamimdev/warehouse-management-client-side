@@ -2,73 +2,91 @@
     {
         "img": "https://i.ibb.co/S6PGz3G/6.png",
         "name": "Cricket Bat", 
-        "description": "You can find your favorite cricket bat in our sports gear warehouse. We are provide the best cricket bat all over city. ",
-        "price": 0,
-        "quantity": 1,
-        "supplier_name": ""
+        "description": "You can find your favorite cricket bat in our sports gear warehouse. We are provide the best cricket bat all over city. And we provide number one cricket bat in the city. So, don't mistake to chose best sports gear warehouse. You are most welcome.",
+        "price": 30000,
+        "quantity": 10,
+        "supplier_name": "Shakib al Hasan",
+        "sold": "unsold",
+        "shipping": "free"
     },
     {
         "img": "https://i.ibb.co/qdn2p1h/2.png",
         "name": "Football", 
-        "description": "a",
-        "price": 0,
-        "quantity": 1,
-        "supplier_name": ""
+        "description": "Hey, There you can find your favorite football gear in our sports gear warehouse. We are provide the best football gear all over city. And we provide number one football gear in the world. So, don't mistake to chose best sports gear warehouse in the city.",
+        "price": 20000,
+        "quantity": 12,
+        "supplier_name": "Leo messi",
+        "sold": "unsold",
+        "shipping": "free"
     },
     {
         "img": "https://i.ibb.co/2W1ZY4H/8.png",
         "name": "Basket Ball", 
-        "description": "a",
-        "price": 0,
-        "quantity": 1,
-        "supplier_name": ""
+        "description": "There you can find your favorite Basket ball gear in our sports gear warehouse. We are provide the best Basket ball gear all over city. And we provide number one basket ball gear in the city. We are the best sports gear warehouse in the city.",
+        "price": 25000,
+        "quantity": 15,
+        "supplier_name": "Stive Smith",
+        "sold": "unsold",
+        "shipping": "paid"
     },
     {
         "img": "https://i.ibb.co/dr4nkRp/1.png",
         "name": "Tennis Ball", 
-        "description": "a",
-        "price": 0,
-        "quantity": 1,
-        "supplier_name": ""
+        "description": "Here you can find your favorite Tennis ball in our sports gear warehouse. We are provide the best tennis ball all over city. And we provide number one tennis ball in the city. So, don't mistake to chose best sports gear warehouse in the city.",
+        "price": 12000,
+        "quantity": 8,
+        "supplier_name": "Rather Fetherer",
+        "sold": "unsold",
+        "shipping": "paid"
     },
     {
         "img": "https://i.ibb.co/Lz6H4v4/7.png",
         "name": "Cricket Ball", 
-        "description": "a",
-        "price": 0,
-        "quantity": 1,
-        "supplier_name": ""
+        "description": "There you can find your favorite cricket ball gear in our sports gear warehouse. We are provide the best cricket ball gear all over city. And we provide number one cricket ball gear in the city. We are the best sports gear warehouse in the city.",
+        "price": 10000,
+        "quantity": 10,
+        "supplier_name": "Mustafizur Rahman",
+        "sold": "unsold",
+        "shipping": "free"
     },
     {
         "img": "https://i.ibb.co/MfBXgTs/4.png",
         "name": "Rugby Ball", 
-        "description": "a",
-        "price": 0,
-        "quantity": 1,
-        "supplier_name": ""
+        "description": "Here you can find your favorite Rugby ball in our sports gear warehouse. We are provide the best Rugby ball all over city. And we provide number one Rugby ball in the city. So, don't mistake to chose best sports gear warehouse in the city",
+        "price": 5000,
+        "quantity": 17,
+        "supplier_name": "Kene Williamson",
+        "sold": "unsold",
+        "shipping": "paid"
     },
     {
         "img": "https://i.ibb.co/Cb2SqrJ/3.png",
         "name": "Hockey Stick ", 
-        "description": "a",
-        "price": 0,
-        "quantity": 1,
-        "supplier_name": ""
+        "description": "There you can find your favorite Hockey Stick  ball gear in our sports gear warehouse. We are provide the best hockey stick gear all over city. And we provide number one hockey stick ball gear in the city. We are the best sports gear warehouse in the city.",
+        "price": 14000,
+        "quantity": 13,
+        "supplier_name": "Mamunur Rahid",
+        "sold": "unsold",
+        "shipping": "free"
     },
     {
         "img": "https://i.ibb.co/Dz1ddj2/5.png",
         "name": "Golf Ball", 
-        "description": "a",
-        "price": 0,
-        "quantity": 1,
-        "supplier_name": ""
+        "description": "We provide the best sports gear and you can find your favorite golf ball gear in our sports gear warehouse. We are provide the best golf ball gear all over city. And we provide number one golf ball gear in the city. We are the best sports gear warehouse in the city.",
+        "price": 17000,
+        "quantity": 11,
+        "supplier_name": "Tamim Iqbal",
+        "sold": "unsold",
+        "shipping": "free"
     },
     {
         "img": "https://i.ibb.co/WHtRMCZ/9.png",
         "name": "Badminton bat", 
-        "description": "a",
-        "price": 0,
-        "quantity": 1,
-        "supplier_name": ""
+        "description": "There you can find your favorite badminton bat gear in our sports gear warehouse. We are provide the best badminton bat gear all over city. And we provide number one badminton bat gear in the city. We are the best sports gear warehouse in the city.",
+        "price": 16000,
+        "quantity": 9,
+        "supplier_name": "Rofiz ullah",
+        "sold": "unsold",
+        "shipping": "paid"
     }
 ]
