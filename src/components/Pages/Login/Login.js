@@ -1,6 +1,7 @@
 import React from 'react';
 import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
 import { useForm } from "react-hook-form";
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     const { register, handleSubmit } = useForm();
@@ -19,11 +20,14 @@ const Login = () => {
                         <input type='email' className='w-full  border mb-4 h-10 px-2 rounded focus:outline-none' {...register("email")} name="email" required placeholder='Your email' />
 
                         <label htmlFor="password">Password</label>
-                        <input type='password' className='w-full border mb-4 h-10 px-2 rounded focus:outline-none' {...register("password")} name="password" placeholder='password' />
+                        <input type='password' className='w-full border mb-4 h-10 px-2 rounded focus:outline-none' {...register("password")} name="password" placeholder='password' required />
+                        <p className='cursor-pointer btn-link underline pl-2 mb-2'>Forget password?</p>
                         <div className='flex justify-center'>
-                            <input className='bg-green-400 px-12 text-white rounded hover:bg-green-500 font-semibold cursor-pointer py-2' value={"Login"} type="submit" />
+                            <input className='bg-green-400 px-12 text-white rounded hover:bg-green-500 font-semibold cursor-pointer py-2' value="Login" type="submit" />
                         </div>
+                        <p className='mt-4 pl-2'>Already have an account? <span className='text-yellow-500 font-bold underline ml-1 cursor-pointer'>Login</span></p>
                     </form>
+
                 </div>
 
                 {/* Social login section  */}
