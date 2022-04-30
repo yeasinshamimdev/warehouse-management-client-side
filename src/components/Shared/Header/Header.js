@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import CustomLink from '../CustomLink/CustomLink';
 
 const Header = () => {
+    const navigate = useNavigate();
     return (
         <div className='sticky-top'>
             <nav className="relative w-full flex flex-wrap items-center justify-between py-3 bg-slate-200 text-black shadow-lg navbar navbar-expand-lg navbar-light">
@@ -44,8 +45,8 @@ const Header = () => {
                     </div>
                     <div className="flex md:items-center relative md:mt-0 mt-2">
                         <div>
-                            <button className='text-xs md:text-sm hover:bg-green-500 mr-2 bg-green-400 py-1 px-2 text-white rounded'>Sign Up</button>
-                            <button className='text-xs md:text-sm hover:bg-green-500 mr-2 bg-green-400 py-1 px-2 text-white rounded'>Login</button>
+                            <button onClick={() => navigate('/signup')} className='text-xs md:text-sm hover:bg-green-500 mr-2 bg-green-400 py-1 px-2 text-white rounded'>Sign Up</button>
+                            <button onClick={() => navigate('/login')} className='text-xs md:text-sm hover:bg-green-500 mr-2 bg-green-400 py-1 px-2 text-white rounded'>Login</button>
                         </div>
                         <div className="dropdown relative">
                             <Link className="dropdown-toggle flex items-center hidden-arrow"
