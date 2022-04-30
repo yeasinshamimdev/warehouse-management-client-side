@@ -1,0 +1,74 @@
+[
+    {
+        "img": "https://i.ibb.co/S6PGz3G/6.png",
+        "name": "Cricket Bat", 
+        "description": "You can find your favorite cricket bat in our sports gear warehouse. We are provide the best cricket bat all over city. ",
+        "price": 0,
+        "quantity": 1,
+        "supplier_name": ""
+    },
+    {
+        "img": "https://i.ibb.co/qdn2p1h/2.png",
+        "name": "Football", 
+        "description": "a",
+        "price": 0,
+        "quantity": 1,
+        "supplier_name": ""
+    },
+    {
+        "img": "https://i.ibb.co/2W1ZY4H/8.png",
+        "name": "Basket Ball", 
+        "description": "a",
+        "price": 0,
+        "quantity": 1,
+        "supplier_name": ""
+    },
+    {
+        "img": "https://i.ibb.co/dr4nkRp/1.png",
+        "name": "Tennis Ball", 
+        "description": "a",
+        "price": 0,
+        "quantity": 1,
+        "supplier_name": ""
+    },
+    {
+        "img": "https://i.ibb.co/Lz6H4v4/7.png",
+        "name": "Cricket Ball", 
+        "description": "a",
+        "price": 0,
+        "quantity": 1,
+        "supplier_name": ""
+    },
+    {
+        "img": "https://i.ibb.co/MfBXgTs/4.png",
+        "name": "Rugby Ball", 
+        "description": "a",
+        "price": 0,
+        "quantity": 1,
+        "supplier_name": ""
+    },
+    {
+        "img": "https://i.ibb.co/Cb2SqrJ/3.png",
+        "name": "Hockey Stick ", 
+        "description": "a",
+        "price": 0,
+        "quantity": 1,
+        "supplier_name": ""
+    },
+    {
+        "img": "https://i.ibb.co/Dz1ddj2/5.png",
+        "name": "Golf Ball", 
+        "description": "a",
+        "price": 0,
+        "quantity": 1,
+        "supplier_name": ""
+    },
+    {
+        "img": "https://i.ibb.co/WHtRMCZ/9.png",
+        "name": "Badminton bat", 
+        "description": "a",
+        "price": 0,
+        "quantity": 1,
+        "supplier_name": ""
+    }
+]

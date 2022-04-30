@@ -4,7 +4,7 @@ import CustomLink from '../CustomLink/CustomLink';
 
 const Header = () => {
     return (
-        <div>
+        <div className='sticky-top'>
             <nav className="relative w-full flex flex-wrap items-center justify-between py-3 bg-slate-200 text-black shadow-lg navbar navbar-expand-lg navbar-light">
                 <div className="container-fluid w-full flex flex-wrap md:items-center justify-between md:px-10 px-4">
                     <div className='hidden md:block'>
