@@ -7,9 +7,7 @@ import CustomLink from '../CustomLink/CustomLink';
 
 const Header = () => {
     const navigate = useNavigate();
-    const [user, loading, error] = useAuthState(auth);
-
-    console.log(user);
+    const [user] = useAuthState(auth);
 
     return (
         <div className='sticky-top'>
@@ -94,19 +92,24 @@ const Header = () => {
                             </Link>
                             <ul className="dropdown-menu min-w-max absolute bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none left-auto right-0"
                                 aria-labelledby="dropdownMenuButton2" >
-                                <li>
-                                    <Link className="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
-                                        to='/manageitems'
-                                    >Manage Items</Link >
-                                </li>
-                                <li>
-                                    <Link className="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
-                                        to='/additem' >Add Item</Link >
-                                </li>
-                                <li>
-                                    <Link className="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
-                                        to='/myitems' >My items</Link >
-                                </li>
+                                {
+                                    user ?
+                                        <>
+                                            <li>
+                                                <Link className="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+                                                    to='/manageitems'
+                                                >Manage Items</Link >
+                                            </li>
+                                            <li>
+                                                <Link className="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+                                                    to='/additem' >Add Item</Link >
+                                            </li>
+                                            <li>
+                                                <Link className="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+                                                    to='/myitems' >My items</Link >
+                                            </li>
+                                        </> : ''
+                                }
                             </ul>
                         </div>
                     </div>
