@@ -1,5 +1,3 @@
-import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { signOut } from 'firebase/auth';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -63,6 +61,9 @@ const Header = () => {
                                 }
                                 <li className="nav-item p-2">
                                     <CustomLink className="nav-link hover:bg-slate-300 opacity-80 hover:opacity-100 p-0" to='/blog'>Blog</CustomLink >
+                                </li>
+                                <li className="nav-item p-2">
+                                    <CustomLink className="nav-link hover:bg-slate-300 opacity-80 hover:opacity-100 p-0" to='/about'>About us</CustomLink >
                                 </li>
                             </ul>
                         </div>
