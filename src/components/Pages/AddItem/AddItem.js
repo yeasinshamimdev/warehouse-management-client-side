@@ -35,10 +35,15 @@ const AddItem = () => {
                     <textarea className='border rounded w-full outline-none px-2 my-2' {...register("description")} required placeholder='description' name='description' />
 
                     <div className='mb-4'>
-                        <p>Sold:</p>
+                        <p className='inline'>Sold:</p>
                         <select {...register("sold")}>
                             <option value="unsold">unsold</option>
                             <option value="sold">sold</option>
+                        </select>
+                        <p className='inline ml-2'>Shipping:</p>
+                        <select {...register("shipping")}>
+                            <option value="free">free</option>
+                            <option value="paid">paid</option>
                         </select>
                     </div>
 
