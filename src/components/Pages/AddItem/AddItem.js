@@ -44,11 +44,8 @@ const AddItem = () => {
                             <option value="unsold">unsold</option>
                             <option value="sold">sold</option>
                         </select>
-                        <p className='inline ml-2'>Shipping:</p>
-                        <select {...register("shipping")}>
-                            <option value="free">free</option>
-                            <option value="paid">paid</option>
-                        </select>
+                        <label htmlFor="shipping">Shipping</label>
+                        <input className='border rounded w-full outline-none px-2 my-2 h-8' type="number" {...register("shipping")} required placeholder='shipping' name='shipping' />
                     </div>
 
                     <div className='flex justify-center'>

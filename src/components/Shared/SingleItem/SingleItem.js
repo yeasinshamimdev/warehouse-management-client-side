@@ -16,8 +16,7 @@ const SingleItem = ({ item }) => {
                 <p className='text-justify text-sm mb-2'>{description}</p>
                 <h6 className='font-semibold text-sm'>Quantity: {quantity} items</h6>
                 <h5 className='font-semibold text-sm'>Supplier name: {supplier_name}</h5>
-                <p className='font-semibold text-sm mt-2'>Sold: <button className='bg-yellow-300 hover:bg-yellow-400 px-2 ml-2 font-bold rounded'>{sold}</button></p>
-                <p className='mt-2 text-sm'>Shipping: {shipping}$</p>
+
             </div>
             <div className='absolute bottom-0 pl-2 w-full flex justify-center'>
                 <button onClick={() => navigate(`/inventory/${_id}`)} className='bg-green-400 hover:bg-green-500 rounded py-1 px-8 mb-2 text-white '>stock update</button>

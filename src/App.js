@@ -18,6 +18,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from './firebase.init';
 import Spinner from './components/Shared/Spinner/Spinner';
 import RequireAuth from './components/Pages/RequireAuth/RequireAuth';
+import SingleInventory from './components/Pages/SingleInventory/SingleInventory';
 
 function App() {
   const [user, loading] = useAuthState(auth);
@@ -36,7 +37,7 @@ function App() {
         }></Route>
         <Route path='/inventory/:itemId' element={
           <RequireAuth>
-            <Inventory />
+            <SingleInventory />
           </RequireAuth>
         }></Route>
         <Route path='/manageitems' element={

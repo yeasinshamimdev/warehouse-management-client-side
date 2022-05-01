@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import useItems from '../../../hooks/useItems';
 import SingleItem from '../../Shared/SingleItem/SingleItem';
 import Spinner from '../../Shared/Spinner/Spinner';
@@ -13,6 +14,7 @@ const Home = () => {
         { id: 4, img: "https://i.ibb.co/54PBjMg/4-1.png", name: "Online Support", des: "Support 24 hours a day" },
     ];
 
+    const navigate = useNavigate();
     const [items] = useItems();
 
     return (
@@ -35,6 +37,9 @@ const Home = () => {
                 {
                     items.slice(0, 6).map(item => <SingleItem key={item._id} item={item} />)
                 }
+            </div>
+            <div className='flex justify-center'>
+                <button onClick={() => navigate('/inventory')} className='bg-green-400 hover:bg-green-500 mt-6 px-6 py-1 rounded text-white '>Manage inventory</button>
             </div>
         </div>
     );
