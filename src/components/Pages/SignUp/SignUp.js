@@ -1,12 +1,29 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../../firebase.init';
+import Spinner from '../../Shared/Spinner/Spinner';
 
 const SignUp = () => {
     const { register, handleSubmit } = useForm();
     const onSubmit = data => console.log(data);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const location = useLocation();
+    const [user, loading, error] = useAuthState(auth);
+
+    let from = location?.state?.from?.pathname || "/";
+
+    useEffect(() => {
+        if (user) {
+            navigate(from, { replace: true });
+        }
+    })
+
+    if (loading) {
+        return <Spinner />
+    }
 
     return (
         <div className='md:w-1/2 mx-auto my-12 px-4 md:px-0'>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { useAuthState } from 'react-firebase-hooks/auth'
 import auth from '../../../firebase.init';
@@ -6,15 +6,19 @@ import auth from '../../../firebase.init';
 const AddItem = () => {
     const { register, handleSubmit } = useForm();
     const onSubmit = data => console.log(data);
-    const [user] = useAuthState(auth)
+    const [user] = useAuthState(auth);
+    const [value, setValue] = useState();
 
     return (
         <div className='md:w-1/2 mx-auto px-4 my-12'>
             <h1 className='text-center text-4xl mb-4'>Add Item</h1>
-            <div className='bg-slate-200 rounded-lg border-4 px-2 py-4'>
+            <div className='bg-slate-200 rounded-lg border-4 px-2 py-4 shadow-lg'>
                 <form onSubmit={handleSubmit(onSubmit)} >
                     <label htmlFor="email">Email</label>
-                    <input className='border rounded w-full outline-none px-2 my-2 h-8' type="email" name="email" id="email" {...register("email")} value={user?.email} readOnly />
+                    <input className='border rounded w-full outline-none px-2 my-2 h-8' type="email" name="email" id="email" {...register("email")}
+                        value={value ?? ""}
+                        onClick={(e) => setValue(user?.email)} readOnly
+                    />
 
                     <label htmlFor="name">Name</label>
                     <input className='border rounded w-full outline-none px-2 my-2 h-8' type="text" {...register("name")} placeholder="Item name" required name='name' />

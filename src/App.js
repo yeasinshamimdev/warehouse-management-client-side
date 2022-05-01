@@ -14,18 +14,49 @@ import MyItems from './components/Pages/MyItems/MyItems';
 import Blog from './components/Pages/Blog/Blog';
 import NotFound from './components/Shared/NotFound/NotFound';
 import About from './components/Pages/About/About';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from './firebase.init';
+import Spinner from './components/Shared/Spinner/Spinner';
+import RequireAuth from './components/Pages/RequireAuth/RequireAuth';
 
 function App() {
+  const [user, loading] = useAuthState(auth);
+  if (loading) return <Spinner />
+
   return (
     <div className='bg-slate-100'>
       <Header />
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='/home' element={<Home />}></Route>
-        <Route path='/inventory' element={<Inventory />}></Route>
-        <Route path='/manageitems' element={<ManageItems />}></Route>
-        <Route path='/additem' element={<AddItem />}></Route>
-        <Route path='/myitems' element={<MyItems />}></Route>
+        <Route path='/inventory' element={
+          <RequireAuth>
+            <Inventory />
+          </RequireAuth>
+        }></Route>
+        <Route path='/inventory/:itemId' element={
+          <RequireAuth>
+            <Inventory />
+          </RequireAuth>
+        }></Route>
+        <Route path='/manageitems' element={
+          <RequireAuth>
+            <ManageItems />
+          </RequireAuth>
+        }>
+        </Route>
+        <Route path='/additem' element={
+          <RequireAuth>
+            <AddItem />
+          </RequireAuth>
+        }>
+        </Route>
+        <Route path='/myitems' element={
+          <RequireAuth>
+            <MyItems />
+          </RequireAuth>
+        }>
+        </Route>
         <Route path='/blog' element={<Blog />}> </Route>
         <Route path='/about' element={<About />}></Route>
         <Route path='/login' element={<Login />}></Route>

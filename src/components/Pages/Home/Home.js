@@ -1,6 +1,7 @@
 import React from 'react';
 import useItems from '../../../hooks/useItems';
 import SingleItem from '../../Shared/SingleItem/SingleItem';
+import Spinner from '../../Shared/Spinner/Spinner';
 import Banner from './Banner/Banner';
 import OurSpecialty from './OurSpecialty/OurSpecialty';
 
@@ -27,6 +28,9 @@ const Home = () => {
 
             {/* Our Items section  */}
             <h1 className='text-center md:text-5xl text-3xl my-4 md:mb-8 md:mt-16 text-neutral-600'>Our Items</h1>
+            {
+                items.length === 0 && <Spinner />
+            }
             <div className='grid grid-cols-1 md:grid-cols-3 gap-6 px-4 md:px-0'>
                 {
                     items.slice(0, 6).map(item => <SingleItem key={item._id} item={item} />)
