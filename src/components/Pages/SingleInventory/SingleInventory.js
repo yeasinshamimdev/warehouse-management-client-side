@@ -5,13 +5,13 @@ import useItems from '../../../hooks/useItems';
 import Spinner from '../../Shared/Spinner/Spinner';
 
 const SingleInventory = () => {
-    const [updatedQuantity, setUpdatedQuantity] = useState();
     const { register, handleSubmit } = useForm();
     const onSubmit = data => console.log(data);
     const navigate = useNavigate();
 
     const [items] = useItems();
     const { itemId } = useParams();
+
     if (items.length === 0) {
         return <Spinner />
     }

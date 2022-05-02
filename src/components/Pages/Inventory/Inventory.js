@@ -1,8 +1,8 @@
 import React from 'react';
 import useItems from '../../../hooks/useItems';
-import SingleItem from '../../Shared/SingleItem/SingleItem';
 import TabularForm from '../TabularForm/TabularForm';
 import Spinner from '../../Shared/Spinner/Spinner';
+import InventoryForMobile from '../InventoryForMobile/InventoryForMobile';
 
 const Inventory = () => {
     const [items] = useItems();
@@ -15,7 +15,7 @@ const Inventory = () => {
             }
             <div className='grid grid-cols-1 md:hidden gap-6 px-4 md:px-0'>
                 {
-                    items.map(item => <SingleItem key={item._id} item={item} />)
+                    items.map(item => <InventoryForMobile key={item._id} item={item} />)
                 }
             </div>
 

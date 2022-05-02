@@ -52,7 +52,8 @@ const TabularForm = ({ item }) => {
                 <td className='flex justify-center'>
                     <button
                         onClick={handleDeleteItem}
-                        className='bg-red-500 text-white px-3 mt-2 rounded hover:bg-red-400 py-1'>Delete</button>
+                        className='bg-red-500 text-white px-3 mt-2 rounded hover:bg-red-400 py-1'>Delete
+                    </button>
                 </td>
             </tr>
         </tbody>
