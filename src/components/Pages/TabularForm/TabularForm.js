@@ -1,10 +1,30 @@
 import React from 'react';
+import { toast } from 'react-toastify';
+import useItems from '../../../hooks/useItems';
 
 const TabularForm = ({ item }) => {
+    const [items, setItems] = useItems();
     const { _id, img, name, price, quantity, supplier_name } = item;
 
     const handleDeleteItem = () => {
-        const url = ``
+        const sure = window.confirm("Are you sure! You want to delete?");
+        if (sure) {
+            const url = `http://localhost:5000/products/${_id}`;
+            fetch(url, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        const remaining = items.filter(item => item._id !== _id);
+                        setItems(remaining);
+                        toast.success('Item deleted successful');
+                    };
+                });
+        }
+        else {
+            toast('Not deleted');
+        }
     }
 
     return (
