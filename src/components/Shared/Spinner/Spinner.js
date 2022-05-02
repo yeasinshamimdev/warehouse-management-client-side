@@ -15,7 +15,7 @@ const Spinner = () => {
     return (
         <div className="sweet-loading">
             <button onClick={() => setLoading(!loading)}></button>
-            <input value={color} onChange={(input) => setColor(input.target.value)} />
+            <input className='bg-slate-100' value={color} onChange={(input) => setColor(input.target.value)} />
 
             <ClipLoader color={color} loading={loading} css={override} size={150} />
         </div>

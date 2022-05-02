@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
 import useItems from '../../../hooks/useItems';
 import Spinner from '../../Shared/Spinner/Spinner';
 
 const SingleInventory = () => {
+    const [updatedQuantity, setUpdatedQuantity] = useState();
     const { register, handleSubmit } = useForm();
     const onSubmit = data => console.log(data);
     const navigate = useNavigate();
@@ -14,12 +15,20 @@ const SingleInventory = () => {
     if (items.length === 0) {
         return <Spinner />
     }
+
     const itemIdFind = items.find(item => item._id === itemId);
     const { _id, img, name, price, description, quantity, supplier_name, sold, shipping } = itemIdFind;
+
+    const handleQuantity = e => {
+
+    }
 
     return (
         <div className='md:px-10'>
             <h1 className='text-center md:text-4xl text-2xl my-4 md:mb-8 md:mt-16 text-slate-800'>Single Item</h1>
+            {
+                items.length === 0 && <Spinner />
+            }
 
             <div className='md:flex justify-center px-4 md:px-0'>
                 <div className='border rounded relative shadow-lg bg-slate-50 md:w-1/3 md:mr-10'>
@@ -36,7 +45,9 @@ const SingleInventory = () => {
                         <p className='mt-2 text-sm'>Shipping: {shipping}$</p>
                         <p className='text-sm mt-2 mb-2'>Id: {_id}</p>
                         <div className='absolute bottom-0 pl-2 w-full flex justify-center'>
-                            <button className='bg-green-400 hover:bg-green-500 rounded py-1 px-8 mb-4 text-white '>Delivered</button>
+                            <button
+                                onClick={handleQuantity}
+                                className='bg-green-400 hover:bg-green-500 rounded py-1 px-8 mb-4 text-white'>Delivered</button>
                         </div>
                     </div>
                 </div>
@@ -45,8 +56,8 @@ const SingleInventory = () => {
                         <label className='text-xl' htmlFor="quantity">Restock</label>
                         <input className='border rounded w-full outline-none px-2 my-2 h-8' type="number" {...register("quantity")} placeholder="add quantity" required name='quantity' />
 
-                        <div className='flex justify-center'>
-                            <input type="submit" value="Add Item" className='bg-green-500 hover:bg-green-400 text-white rounded cursor-pointer px-10 py-1' />
+                        <div className='flex justify-center mt-2'>
+                            <input type="submit" value="Restock" className='bg-green-500 hover:bg-green-400 text-white rounded cursor-pointer px-10 py-1' />
                         </div>
                     </form>
                 </div>

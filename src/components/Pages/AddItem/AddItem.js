@@ -44,7 +44,7 @@ const AddItem = () => {
                             <option value="unsold">unsold</option>
                             <option value="sold">sold</option>
                         </select>
-                        <label htmlFor="shipping">Shipping</label>
+                        <label className='block mt-2' htmlFor="shipping">Shipping</label>
                         <input className='border rounded w-full outline-none px-2 my-2 h-8' type="number" {...register("shipping")} required placeholder='shipping' name='shipping' />
                     </div>
 
