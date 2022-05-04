@@ -2,12 +2,29 @@ import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { useAuthState } from 'react-firebase-hooks/auth'
 import auth from '../../../firebase.init';
+import { toast } from 'react-toastify';
 
 const AddItem = () => {
     const { register, handleSubmit } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+        const url = 'https://whispering-garden-12680.herokuapp.com/userItems';
+        fetch(url, {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    toast.success('Product add successful');
+                }
+            })
+    };
+
     const [user] = useAuthState(auth);
-    const [value, setValue] = useState();
+    const [value, setValue] = useState('');
 
     return (
         <div className='md:w-1/2 mx-auto px-4 my-12'>
@@ -15,7 +32,7 @@ const AddItem = () => {
             <div className='bg-slate-200 rounded-lg border-4 px-2 py-4 shadow-lg'>
                 <form onSubmit={handleSubmit(onSubmit)} >
                     <label htmlFor="email">Email</label>
-                    <input className='border rounded w-full outline-none px-2 my-2 h-8' type="email" name="email" id="email" {...register("email")}
+                    <input className='border rounded w-full outline-none px-2 my-2 h-8' type="email" name="email" id="email" {...register("email")} required
                         value={value ?? ""}
                         onClick={(e) => setValue(user?.email)} readOnly
                     />
@@ -41,7 +58,7 @@ const AddItem = () => {
 
                     <div className='mb-4'>
                         <p className='inline'>Sold:</p>
-                        <select {...register("sold")}>
+                        <select {...register("sold")} required>
                             <option value="unsold">unsold</option>
                             <option value="sold">sold</option>
                         </select>

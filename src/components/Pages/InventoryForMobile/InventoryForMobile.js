@@ -11,7 +11,7 @@ const InventoryForMobile = ({ item }) => {
     const handleDeleteItem = () => {
         const sure = window.confirm("Are you sure! You want to delete?");
         if (sure) {
-            const url = `http://localhost:5000/products/${_id}`;
+            const url = `https://whispering-garden-12680.herokuapp.com/products/${_id}`;
             fetch(url, {
                 method: 'DELETE'
             })

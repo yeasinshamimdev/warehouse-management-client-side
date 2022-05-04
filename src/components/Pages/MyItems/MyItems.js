@@ -1,6 +1,8 @@
 import React from 'react';
+import useUserItems from '../../../hooks/useUserItems';
 
 const MyItems = () => {
+    const [userItems, setUserItems] = useUserItems();
 
     return (
         <div>
