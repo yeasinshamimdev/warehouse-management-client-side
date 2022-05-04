@@ -32,7 +32,7 @@ const Banner = () => {
 
                     <div className="carousel-item active relative float-left w-full">
                         <img
-                            src="https://i.ibb.co/ws9KPbv/Untitled-design-3.png"
+                            src="https://i.ibb.co/6XHFwDW/shop-2.png"
                             className="block w-full"
                             alt="Motorbike Smoke" />
                         <div className="carousel-caption md:block absolute text-center">
@@ -44,7 +44,7 @@ const Banner = () => {
 
                     <div className="carousel-item relative float-left w-full">
                         <img
-                            src="https://i.ibb.co/86gKvnp/Untitled-design-4.png"
+                            src="https://i.ibb.co/yX7JTdz/shop-3.png"
                             className="block w-full"
                             alt="Mountaintop" />
                         <div className="carousel-caption md:block absolute text-center">
@@ -56,7 +56,7 @@ const Banner = () => {
 
                     <div className="carousel-item relative float-left w-full">
                         <img
-                            src="https://i.ibb.co/fxycLgn/Untitled-design-2.png"
+                            src="https://i.ibb.co/QY6jg09/shop-1.png"
                             className="block w-full"
                             alt="Woman Reading a Book" />
                         <div className="carousel-caption md:block absolute text-center">

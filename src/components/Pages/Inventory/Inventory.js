@@ -3,9 +3,11 @@ import useItems from '../../../hooks/useItems';
 import TabularForm from '../TabularForm/TabularForm';
 import Spinner from '../../Shared/Spinner/Spinner';
 import InventoryForMobile from '../InventoryForMobile/InventoryForMobile';
+import { useNavigate } from 'react-router-dom';
 
 const Inventory = () => {
     const [items] = useItems();
+    const navigate = useNavigate();
 
     return (
         <div className='md:px-10'>
@@ -58,6 +60,9 @@ const Inventory = () => {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className='flex justify-center my-4'>
+                <button onClick={() => navigate('/additem')} className='bg-green-400 hover:bg-green-500 px-4 rounded py-1 text-white '>Add new Item</button>
             </div>
         </div>
     );

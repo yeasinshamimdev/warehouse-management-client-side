@@ -25,7 +25,7 @@ const InventoryForMobile = ({ item }) => {
                 });
         }
         else {
-            toast('Not deleted');
+            toast('Delete button cancel');
         }
     }
 

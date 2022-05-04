@@ -1,27 +1,50 @@
 import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
+import { toast } from 'react-toastify';
 import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
-import { useAuthState } from 'react-firebase-hooks/auth';
+import { useAuthState, useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import Spinner from '../../Shared/Spinner/Spinner';
 
 const SignUp = () => {
+    const [user, loading, error] = useAuthState(auth);
+    const [createUserWithEmailAndPassword, emailUser, emailLoading, emailError] = useCreateUserWithEmailAndPassword(auth, {
+        sendEmailVerification: true
+    });
+
     const { register, handleSubmit } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+        const email = data.email;
+        const password = data.password;
+        const confirmPassword = data.confirmPassword;
+        if (password !== confirmPassword) {
+            toast.error('Password and confirm Password not match');
+        }
+        else if (password.length < 6 || confirmPassword.length < 6) {
+            toast.error('Password should be getter than 6 characters')
+        }
+        else {
+            createUserWithEmailAndPassword(email, password);
+        };
+    };
+
     const navigate = useNavigate();
     const location = useLocation();
-    const [user, loading, error] = useAuthState(auth);
 
-    let from = location?.state?.from?.pathname || "/";
+    const from = location?.state?.from?.pathname || "/";
 
     useEffect(() => {
         if (user) {
             navigate(from, { replace: true });
+            toast.success('User created successful');
+        }
+        if (emailError?.message === 'Firebase: Error (auth/email-already-in-use).' || emailError?.message === 'Firebase: Error (auth/invalid-email).') {
+            toast.error('Invalid email');
         }
     })
 
-    if (loading) {
+    if (loading || emailLoading) {
         return <Spinner />
     }
 
@@ -41,7 +64,7 @@ const SignUp = () => {
                         <input type='password' className='w-full border mt-1 mb-4 h-10 px-2 rounded focus:outline-none' {...register("password")} name="password" placeholder='password' required />
 
                         <label htmlFor="password">Confirm Password</label>
-                        <input type='password' className='w-full border mt-1 mb-4 h-10 px-2 rounded focus:outline-none' {...register("confirmPassword")} name="password" placeholder='confirm password' required />
+                        <input type='password' className='w-full border mt-1 mb-4 h-10 px-2 rounded focus:outline-none' {...register("confirmPassword")} name="confirmPassword" placeholder='confirm password' required />
 
                         <div className='flex justify-center'>
                             <input className='bg-green-400 px-12 text-white rounded hover:bg-green-500 font-semibold cursor-pointer py-2' value="Sign Up" type="submit" />

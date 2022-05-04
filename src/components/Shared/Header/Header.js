@@ -80,7 +80,7 @@ const Header = () => {
                             }
                         </div>
 
-                        <p className='mr-1'>{user?.displayName?.length > 6 ? user?.displayName?.slice(0, 6) + '..' : user?.displayName}</p>
+                        <p className='mr-1'>{user?.email?.length > 6 ? user?.email?.slice(0, 6) + '..' : user?.email}</p>
                         <div className="dropdown relative">
                             <Link className="dropdown-toggle flex items-center hidden-arrow"
                                 to=''

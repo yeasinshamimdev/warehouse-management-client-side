@@ -33,6 +33,7 @@ const AddItem = () => {
                     <input className='border rounded w-full outline-none px-2 my-2 h-8' type="text" {...register("supplier_name")} required placeholder='supplier name' name='supplier_name' />
 
                     <label htmlFor="img">Image link</label>
+                    <p className='text-xs mt-1 opacity-40'>link suggestions: https://i.ibb.co/hFnC3M4/vollyball.png : https://i.ibb.co/PNT37KF/baseball.png</p>
                     <input className='border rounded w-full outline-none px-2 my-2 h-8' type="text" {...register("img")} required placeholder='image' name='img' />
 
                     <label htmlFor="description">Description</label>
