@@ -20,6 +20,7 @@ const AddItem = () => {
                 if (data.insertedId) {
                     toast.success('Product add successful');
                 }
+                console.log(data);
             })
     };
 

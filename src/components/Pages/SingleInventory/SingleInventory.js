@@ -1,34 +1,49 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import useItems from '../../../hooks/useItems';
 import Spinner from '../../Shared/Spinner/Spinner';
 
 const SingleInventory = () => {
     const { register, handleSubmit } = useForm();
     const onSubmit = data => console.log(data);
-    const navigate = useNavigate();
 
-    const [items] = useItems();
+    const navigate = useNavigate();
     const { itemId } = useParams();
+    const [items] = useItems();
 
     if (items.length === 0) {
         return <Spinner />
     }
+    const filterItems = items.find(item => item._id === itemId);
 
-    const itemIdFind = items.find(item => item._id === itemId);
-    const { _id, img, name, price, description, quantity, supplier_name, sold, shipping } = itemIdFind;
+    const { _id, img, name, price, description, quantity, supplier_name, sold, shipping } = filterItems;
 
     const handleQuantity = e => {
+        const newQuantity = parseInt(quantity) - 1
 
+        console.log(newQuantity);
+        if (newQuantity < 0) {
+            toast.error('quantity can not be less than 0');
+        }
+        else {
+            const url = `http://localhost:5000/products/${itemId}`;
+            fetch(url, {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(newQuantity)
+            })
+                .then(res => res.json())
+                .then(data => console.log(data))
+        }
     }
 
     return (
         <div className='md:px-10'>
             <h1 className='text-center md:text-4xl text-2xl my-4 md:mb-8 md:mt-16 text-slate-800'>Single Item</h1>
-            {
-                items.length === 0 && <Spinner />
-            }
 
             <div className='md:flex justify-center px-4 md:px-0'>
                 <div className='border rounded relative shadow-lg bg-slate-50 md:w-1/3 md:mr-10'>
