@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAddressBook, faAppleAlt, faGift, faInbox, faMailBulk } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     const date = new Date();
@@ -21,9 +22,21 @@ const Footer = () => {
                 </div>
                 <div>
                     <h1 className='text-center text-xl font-mono mt-4 md:mt-0'>Products</h1>
+                    <ul className='text-center mt-4'>
+                        <li className='cursor-pointer mt-2'>Cricket Ball</li>
+                        <li className='cursor-pointer mt-2'>Football</li>
+                        <li className='cursor-pointer mt-2'>Baseball</li>
+                        <li className='cursor-pointer mt-2'>Basket Ball</li>
+                    </ul>
                 </div>
                 <div>
                     <h1 className='text-center text-xl font-mono mt-4 md:mt-0'>Useful Links</h1>
+                    <div className='flex flex-col text-center mt-4'>
+                        <Link className='cursor-pointer' to='/home'>Home</Link>
+                        <Link className='cursor-pointer mt-2' to='/inventory'>Inventory</Link>
+                        <Link className='cursor-pointer mt-2' to='/blog'>Blog</Link>
+                        <Link className='cursor-pointer mt-2' to='/additem'>Add Item</Link>
+                    </div>
                 </div>
                 <div>
                     <h1 className='text-center text-xl font-mono mt-4 md:mt-0'>Address</h1>

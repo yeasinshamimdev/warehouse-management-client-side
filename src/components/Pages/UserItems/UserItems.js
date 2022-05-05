@@ -1,10 +1,7 @@
 import React from 'react';
-import { toast } from 'react-toastify';
-import auth from '../../../firebase.init';
 
 const UserItems = ({ userItem }) => {
     const { _id, img, name, price, description, quantity, supplier_name, sold, shipping, email } = userItem;
-
 
     return (
         <div>

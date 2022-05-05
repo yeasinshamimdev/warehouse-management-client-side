@@ -7,7 +7,6 @@ import useSingleItem from '../../../hooks/useSingleItem';
 const SingleInventory = () => {
     const { register, handleSubmit } = useForm();
 
-
     const navigate = useNavigate();
     const { itemId } = useParams();
     const [singleItem] = useSingleItem(itemId);
@@ -43,7 +42,6 @@ const SingleInventory = () => {
     const handleQuantity = e => {
         const newQuantity = parseInt(quantity) - 1;
 
-        console.log(newQuantity);
         if (newQuantity < 0) {
             toast.error('quantity can not be less than 0');
             return;
@@ -68,7 +66,7 @@ const SingleInventory = () => {
 
     return (
         <div className='md:px-10'>
-            <h1 className='text-center md:text-4xl text-2xl my-4 md:mb-8 md:mt-16 text-slate-800'>Single Item</h1>
+            <h1 className='text-center md:text-4xl text-2xl my-4 md:mb-8 md:mt-10 text-slate-800'>Single Item</h1>
 
             <div className='md:flex justify-center px-4 md:px-0'>
                 <div className='border rounded relative shadow-lg bg-slate-50 md:w-1/3 md:mr-10'>
