@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import useItems from '../../../hooks/useItems';
+import useSingleItem from '../../../hooks/useSingleItem';
 import Spinner from '../../Shared/Spinner/Spinner';
 
 const SingleInventory = () => {
@@ -11,14 +11,10 @@ const SingleInventory = () => {
 
     const navigate = useNavigate();
     const { itemId } = useParams();
-    const [items] = useItems();
+    const [singleItem] = useSingleItem(itemId);
+    console.log(singleItem)
 
-    if (items.length === 0) {
-        return <Spinner />
-    }
-    const filterItems = items.find(item => item._id === itemId);
-
-    const { _id, img, name, price, description, quantity, supplier_name, sold, shipping } = filterItems;
+    const { _id, img, name, price, description, quantity, supplier_name, sold, shipping } = singleItem;
 
     const handleQuantity = e => {
         const newQuantity = parseInt(quantity) - 1
@@ -28,13 +24,13 @@ const SingleInventory = () => {
             toast.error('quantity can not be less than 0');
         }
         else {
-            const url = `http://localhost:5000/products/${itemId}`;
+            const url = `https://whispering-garden-12680.herokuapp.com/products/${itemId}`;
             fetch(url, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json'
                 },
-                body: JSON.stringify(newQuantity)
+                body: JSON.stringify()
             })
                 .then(res => res.json())
                 .then(data => console.log(data))

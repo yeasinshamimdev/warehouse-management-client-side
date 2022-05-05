@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 const AddItem = () => {
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
-        const url = 'https://whispering-garden-12680.herokuapp.com/userItems';
+        const url = 'https://whispering-garden-12680.herokuapp.com/products';
         fetch(url, {
             method: "POST",
             headers: {
