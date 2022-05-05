@@ -7,7 +7,7 @@ const useSingleItem = itemId => {
         fetch(url)
             .then(res => res.json())
             .then(data => setSingleItem(data))
-    }, [itemId]);
+    }, [itemId, singleItem]);
 
     return [singleItem, setSingleItem];
 }

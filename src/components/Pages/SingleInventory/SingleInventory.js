@@ -1,26 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import useSingleItem from '../../../hooks/useSingleItem';
-import Spinner from '../../Shared/Spinner/Spinner';
 
 const SingleInventory = () => {
     const { register, handleSubmit } = useForm();
-    const onSubmit = data => console.log(data);
+
 
     const navigate = useNavigate();
     const { itemId } = useParams();
     const [singleItem] = useSingleItem(itemId);
-    console.log(singleItem)
 
     const { _id, img, name, price, description, quantity, supplier_name, sold, shipping } = singleItem;
 
-    const handleQuantity = e => {
-        const newQuantity = parseInt(quantity) - 1
+    const onSubmit = data => {
+        const restockQuantity = data.quantity;
+        const newQuantity = parseInt(quantity) + parseInt(restockQuantity);
 
-        console.log(newQuantity);
-        if (newQuantity < 0) {
+        if (newQuantity <= 0) {
             toast.error('quantity can not be less than 0');
         }
         else {
@@ -30,10 +28,41 @@ const SingleInventory = () => {
                 headers: {
                     'content-type': 'application/json'
                 },
-                body: JSON.stringify()
+                body: JSON.stringify({ newQuantity })
             })
                 .then(res => res.json())
-                .then(data => console.log(data))
+                .then(data => {
+                    console.log(data);
+                    if (data.matchedCount) {
+                        toast.success('Update successful')
+                    }
+                })
+        }
+    };
+
+    const handleQuantity = e => {
+        const newQuantity = parseInt(quantity) - 1;
+
+        console.log(newQuantity);
+        if (newQuantity < 0) {
+            toast.error('quantity can not be less than 0');
+            return;
+        }
+        else {
+            const url = `https://whispering-garden-12680.herokuapp.com/products/${itemId}`;
+            fetch(url, {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify({ newQuantity })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.matchedCount) {
+                        toast.success('Update successful')
+                    }
+                })
         }
     }
 
@@ -68,7 +97,8 @@ const SingleInventory = () => {
                         <input className='border rounded w-full outline-none px-2 my-2 h-8' type="number" {...register("quantity")} placeholder="add quantity" required name='quantity' />
 
                         <div className='flex justify-center mt-2'>
-                            <input type="submit" value="Restock" className='bg-green-500 hover:bg-green-400 text-white rounded cursor-pointer px-10 py-1' />
+                            <input
+                                type="submit" value="Restock" className='bg-green-500 hover:bg-green-400 text-white rounded cursor-pointer px-10 py-1' />
                         </div>
                     </form>
                 </div>
