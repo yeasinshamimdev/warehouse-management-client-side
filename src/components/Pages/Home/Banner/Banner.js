@@ -48,7 +48,7 @@ const Banner = () => {
                             className="block w-full"
                             alt="Mountaintop" />
                         <div className="carousel-caption md:block absolute text-center">
-                            <h5 className="md:text-4xl text-xl text-white shadow-lg md:mb-8">Your favorite sports gear will be there</h5>
+                            <h5 className="md:text-4xl text-xl text-white shadow-lg md:mb-8">Your favorite sports gear will be here</h5>
                             <p className='text-center text-white hidden md:block mx-auto shadow-lg'>Are you searching for any kind of sports gear? Ok, come in our sports gear warehouse. We are providing the best products in this city.</p>
                             <button onClick={() => navigate('/inventory')} className='bg-green-500 md:block px-6 py-1 md:px-10 md:py-2 md:mt-4 rounded text-white text-xs mt-4 md:text-xl cursor-pointer mx-auto hover:bg-green-400 md:mb-2'>Explore</button>
                         </div>

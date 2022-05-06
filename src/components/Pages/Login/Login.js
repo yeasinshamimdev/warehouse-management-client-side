@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
 import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -14,7 +14,7 @@ const Login = () => {
         emailLoading,
         emailError
     ] = useSignInWithEmailAndPassword(auth);
-    const [sendPasswordResetEmail, sending, resetError] = useSendPasswordResetEmail(auth);
+    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
 
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
@@ -27,28 +27,30 @@ const Login = () => {
 
     let from = location?.state?.from?.pathname || "/";
 
+    const handleResetPassword = () => {
+        const inputEmail = document.getElementById('email').value;
+        sendPasswordResetEmail(inputEmail)
+        toast.success('Reset email send')
+    }
+
     useEffect(() => {
         if (user || emailUser) {
             navigate(from, { replace: true });
             toast.success('Login successful')
         }
-        if (loading || emailLoading) {
-            <> <Spinner /></>
+
+        if (emailError?.message === 'Firebase: Error (auth/wrong-password).') {
+            toast.error('Wrong password')
         }
-        if (emailError || error) {
+
+        else if (emailError) {
             toast.error('Login failed')
         }
-    })
 
-    const handleResetPassword = () => {
-        const inputEmail = document.getElementById('email').value;
-        if (inputEmail === '') {
-            toast.error('Please give an email')
-        }
-        else {
-            sendPasswordResetEmail(inputEmail);
-            toast.success('Check your email for reset password')
-        }
+    }, [emailError, error, user, emailUser])
+
+    if (loading || emailLoading || sending) {
+        return <Spinner />
     }
 
     return (
@@ -64,12 +66,13 @@ const Login = () => {
                         <label htmlFor="password">Password</label>
                         <input type='password' className='w-full border mt-1 mb-4 h-10 px-2 rounded focus:outline-none' {...register("password")} name="password" placeholder='password' required />
                         <p onClick={handleResetPassword}
-                            className='cursor-pointer btn-link underline pl-2 mb-2'>Forget password?</p>
+                            className='cursor-pointer btn-link underline pl-2 mb-2'>Forget password?
+                        </p>
                         <div className='flex justify-center'>
                             <input className='bg-green-400 px-12 text-white rounded hover:bg-green-500 font-semibold cursor-pointer py-2' value="Login" type="submit" />
                         </div>
                         <p className='mt-4 pl-2'>New in sports gear warehouse?
-                            <span onClick={() => navigate('/signup')} className='text-yellow-500 font-bold underline ml-1 cursor-pointer hover:text-yellow-400'>Login</span></p>
+                            <span onClick={() => navigate('/signup')} className='text-yellow-500 font-bold underline ml-1 cursor-pointer hover:text-yellow-400'>Sign up</span></p>
                     </form>
                 </div>
 

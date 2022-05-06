@@ -39,7 +39,10 @@ const SignUp = () => {
             navigate(from, { replace: true });
             toast.success('User created successful');
         }
-        if (emailError?.message === 'Firebase: Error (auth/email-already-in-use).' || emailError?.message === 'Firebase: Error (auth/invalid-email).') {
+        if (emailError?.message === 'Firebase: Error (auth/email-already-in-use).') {
+            toast.error('This email already registered')
+        }
+        if (emailError?.message === 'Firebase: Error (auth/invalid-email).') {
             toast.error('Invalid email');
         }
     })

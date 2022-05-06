@@ -1,7 +1,31 @@
 import React from 'react';
+import { toast } from 'react-toastify';
+import useItems from '../../../hooks/useItems';
 
 const UserItems = ({ userItem }) => {
-    const { _id, img, name, price, description, quantity, supplier_name, sold, shipping, email } = userItem;
+    const [items, setItems] = useItems();
+    const { _id, img, name, price, description, quantity, supplier_name, sold, shipping } = userItem;
+
+    const handleDeleteItem = () => {
+        const sure = window.confirm("Are you sure! You want to delete?");
+        if (sure) {
+            const url = `https://whispering-garden-12680.herokuapp.com/products/${_id}`;
+            fetch(url, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        const remaining = items.filter(item => item._id !== _id);
+                        setItems(remaining);
+                        toast.success('Item deleted successful');
+                    };
+                });
+        }
+        else {
+            toast('Not deleted');
+        }
+    }
 
     return (
         <div>
@@ -20,6 +44,7 @@ const UserItems = ({ userItem }) => {
                     <p className='text-sm mt-2 mb-2'>Id: {_id}</p>
                     <div className='absolute bottom-0 pl-2 w-full flex justify-center'>
                         <button
+                            onClick={handleDeleteItem}
                             className='bg-red-400 px-4 py-1 my-2 hover:bg-red-500 text-white rounded'>Delete
                         </button>
                     </div>

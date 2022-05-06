@@ -60,7 +60,11 @@ const Home = () => {
             <div className='flex justify-center md:mt-8'>
                 <h1 className='mt-10 text-center text-xl md:text-4xl border-b-2'>Customer Reviews</h1>
             </div>
+            {
+                reviews.length === 0 && <Spinner />
+            }
             <div className='grid md:gird md:grid-cols-3 gap-x-14 gap-y-6 px-4 md:px-0 my-6'>
+
                 {
                     reviews.map(review => <Review key={review._id} review={review} />)
                 }
@@ -76,7 +80,7 @@ const Home = () => {
                     </div>
                 </div>
                 <div>
-                    <h1 className='text-center text-xl'>Leave a feedback for us</h1>
+                    <h1 className='text-center text-xl'>Leave a feedback here</h1>
                     <div>
                         <form onSubmit={handleFeedback}>
 
@@ -87,7 +91,7 @@ const Home = () => {
                             <input className='w-full text-sm outline-none px-2 h-7 mb-4 rounded' type="email" name="email" id="email" placeholder='Your email' required />
 
                             <label htmlFor="comment">Your feedback</label>
-                            <textarea className='w-full text-sm outline-none px-2 h-16 mb-4 rounded' name="comment" id="comment" placeholder='Your comment' required></textarea>
+                            <textarea className='w-full text-sm outline-none px-2 h-16 mb-4 rounded' name="comment" id="comment" placeholder='Your feedback' required></textarea>
 
                             <input
                                 className='bg-green-500 hover:bg-green-400 px-4 py-1 rounded text-white cursor-pointer' type="submit" value="Feedback" />
