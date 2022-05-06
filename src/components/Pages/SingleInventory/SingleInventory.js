@@ -64,7 +64,7 @@ const SingleInventory = () => {
     }
 
     return (
-        <div className='md:px-10'>
+        <div className='md:px-10 mb-4'>
             <h1 className='text-center md:text-4xl text-2xl my-4 md:mb-8 md:mt-10 text-slate-800'>Single Item</h1>
 
             <div className='md:flex justify-center px-4 md:px-0'>

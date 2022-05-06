@@ -31,7 +31,11 @@ const Login = () => {
         const inputEmail = document.getElementById('email').value;
         if (inputEmail === '') {
             toast.error('Please give an email address!')
-        } else {
+        }
+        else if (!inputEmail.includes('@gmail.com')) {
+            toast.error('Please give an valid email');
+        }
+        else {
             sendPasswordResetEmail(inputEmail);
             toast.success('Email sent successful')
         }
@@ -43,15 +47,16 @@ const Login = () => {
             toast.success('Login successful')
         }
 
-        if (emailError?.message === 'Firebase: Error (auth/wrong-password).') {
-            toast.error('Wrong password')
+        if (emailError) {
+            if (emailError?.message === 'Firebase: Error (auth/wrong-password).') {
+                toast.error('Wrong password')
+            }
+            if (emailError?.message === 'Firebase: Error (auth/user-not-found).') {
+                toast.error('No user match with this email')
+            }
         }
 
-        else if (emailError) {
-            toast.error('Login failed')
-        }
-
-    }, [emailError, error, user, emailUser, resetError])
+    }, [emailError, user])
 
     if (loading || emailLoading || sending) {
         return <Spinner />
@@ -69,15 +74,16 @@ const Login = () => {
 
                         <label htmlFor="password">Password</label>
                         <input type='password' className='w-full border mt-1 mb-4 h-10 px-2 rounded focus:outline-none' {...register("password")} name="password" placeholder='password' required />
-                        <p onClick={handleResetPassword}
-                            className='cursor-pointer btn-link underline pl-2 mb-2 md:w-1/3'>Forget password?
-                        </p>
+
                         <div className='flex justify-center'>
-                            <input className='bg-green-400 px-12 text-white rounded hover:bg-green-500 font-semibold cursor-pointer py-2' value="Login" type="submit" />
+                            <input className='bg-green-400 px-12 text-white rounded hover:bg-green-500 font-semibold cursor-pointer py-2 mt-6' value="Login" type="submit" />
                         </div>
-                        <p className='mt-4 pl-2'>New in sports gear warehouse?
-                            <span onClick={() => navigate('/signup')} className='text-yellow-500 font-bold underline ml-1 cursor-pointer hover:text-yellow-400'>Sign up</span></p>
                     </form>
+                    <p onClick={handleResetPassword}
+                        className='cursor-pointer btn-link underline pl-2 mb-2 md:w-1/3'>Forget password?
+                    </p>
+                    <p className='mt-4 pl-2'>New in sports gear warehouse?
+                        <span onClick={() => navigate('/signup')} className='text-yellow-500 font-bold underline ml-1 cursor-pointer hover:text-yellow-400'>Sign up</span></p>
                 </div>
 
                 {/* Social login section  */}
