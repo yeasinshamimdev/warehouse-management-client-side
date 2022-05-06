@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import useItems from '../../../hooks/useItems';
 import Spinner from '../../Shared/Spinner/Spinner';
@@ -7,6 +8,7 @@ const InventoryForMobile = ({ item }) => {
 
     const [items, setItems] = useItems();
     const { _id, img, name, price, description, quantity, supplier_name, sold, shipping } = item;
+    const navigate = useNavigate();
 
     const handleDeleteItem = () => {
         const sure = window.confirm("Are you sure! You want to delete?");
@@ -31,9 +33,6 @@ const InventoryForMobile = ({ item }) => {
 
     return (
         <div>
-            {
-                item.length === 0 && <Spinner />
-            }
             <div className='md:flex justify-center px-4 md:px-0'>
                 <div className='border rounded relative shadow-lg bg-slate-50 md:w-1/3 md:mr-10'>
                     <div className='p-1 mb-4'>
@@ -49,6 +48,7 @@ const InventoryForMobile = ({ item }) => {
                         <p className='mt-2 text-sm'>Shipping: {shipping}$</p>
                         <p className='text-sm mt-2 mb-2'>Id: {_id}</p>
                         <div className='absolute bottom-0 pl-2 w-full flex justify-center mb-2'>
+                            <button onClick={() => navigate(`/inventory/${_id}`)} className='bg-green-500 text-white px-3 mt-2 rounded hover:bg-green-400 py-1 mr-1'>Update</button>
                             <button
                                 onClick={handleDeleteItem}
                                 className='bg-red-500 text-white px-3 mt-1 rounded hover:bg-red-400 py-1'>Delete

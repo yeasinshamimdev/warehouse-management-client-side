@@ -31,7 +31,6 @@ const SingleInventory = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
                     if (data.matchedCount) {
                         toast.success('Update successful')
                     }

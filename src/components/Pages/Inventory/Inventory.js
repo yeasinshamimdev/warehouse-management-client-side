@@ -12,9 +12,11 @@ const Inventory = () => {
     return (
         <div className='md:px-10'>
             <h1 className='text-center md:text-5xl text-3xl my-4 md:mb-8 md:mt-16 text-slate-900'>Manage Inventory</h1>
-            {
-                items.length === 0 && <Spinner />
-            }
+            <div className='md:hidden'>
+                {
+                    items.length === 0 && <Spinner />
+                }
+            </div>
             <div className='grid grid-cols-1 md:hidden gap-6 px-4 md:px-0'>
                 {
                     items.map(item => <InventoryForMobile key={item._id} item={item} />)
@@ -48,7 +50,7 @@ const Inventory = () => {
                                                 Supplier name
                                             </th>
                                             <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                                Delete
+                                                Update/Delete
                                             </th>
                                         </tr>
                                     </thead>
@@ -56,6 +58,9 @@ const Inventory = () => {
                                         items.map(item => <TabularForm key={item._id} item={item} />)
                                     }
                                 </table>
+                                {
+                                    items.length === 0 && <Spinner />
+                                }
                             </div>
                         </div>
                     </div>

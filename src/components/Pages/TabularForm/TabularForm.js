@@ -1,10 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import useItems from '../../../hooks/useItems';
 
 const TabularForm = ({ item }) => {
     const [items, setItems] = useItems();
     const { _id, img, name, price, quantity, supplier_name } = item;
+    const navigate = useNavigate();
 
     const handleDeleteItem = () => {
         const sure = window.confirm("Are you sure! You want to delete?");
@@ -50,6 +52,7 @@ const TabularForm = ({ item }) => {
                     {supplier_name}
                 </td>
                 <td className='flex justify-center'>
+                    <button onClick={() => navigate(`/inventory/${_id}`)} className='bg-green-500 text-white px-3 mt-2 rounded hover:bg-green-400 py-1 mr-1'>Update</button>
                     <button
                         onClick={handleDeleteItem}
                         className='bg-red-500 text-white px-3 mt-2 rounded hover:bg-red-400 py-1'>Delete

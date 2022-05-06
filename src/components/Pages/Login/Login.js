@@ -14,7 +14,7 @@ const Login = () => {
         emailLoading,
         emailError
     ] = useSignInWithEmailAndPassword(auth);
-    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
+    const [sendPasswordResetEmail, sending, resetError] = useSendPasswordResetEmail(auth);
 
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
@@ -29,8 +29,12 @@ const Login = () => {
 
     const handleResetPassword = () => {
         const inputEmail = document.getElementById('email').value;
-        sendPasswordResetEmail(inputEmail)
-        toast.success('Reset email send')
+        if (inputEmail === '') {
+            toast.error('Please give an email address!')
+        } else {
+            sendPasswordResetEmail(inputEmail);
+            toast.success('Email sent successful')
+        }
     }
 
     useEffect(() => {
@@ -47,7 +51,7 @@ const Login = () => {
             toast.error('Login failed')
         }
 
-    }, [emailError, error, user, emailUser])
+    }, [emailError, error, user, emailUser, resetError])
 
     if (loading || emailLoading || sending) {
         return <Spinner />
@@ -66,7 +70,7 @@ const Login = () => {
                         <label htmlFor="password">Password</label>
                         <input type='password' className='w-full border mt-1 mb-4 h-10 px-2 rounded focus:outline-none' {...register("password")} name="password" placeholder='password' required />
                         <p onClick={handleResetPassword}
-                            className='cursor-pointer btn-link underline pl-2 mb-2'>Forget password?
+                            className='cursor-pointer btn-link underline pl-2 mb-2 md:w-1/3'>Forget password?
                         </p>
                         <div className='flex justify-center'>
                             <input className='bg-green-400 px-12 text-white rounded hover:bg-green-500 font-semibold cursor-pointer py-2' value="Login" type="submit" />
