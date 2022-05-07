@@ -8,7 +8,7 @@ Stack Overflow Question: [stackoverflow question](https://stackoverflow.com/ques
 
 ## Description:
 
-In this sports gear warehouse site you can add a sports item. You can update quantity of any items. You can delete any items from all items. Here you can restock any item quantity. In this site you also create your sports gear warehouse account. You can login with your google account, facebook account, github account also. Also here you can add new item and see them in you private my items menu. Also you can see there customer review about this site. You can send any feedback for us. In inventory page you can see all the items of this warehouse site.
+In this sports gear warehouse site you can add sports items. You can update quantity of any items. You can delete any items from all items. Here you can restock any item quantity. In this site you also create your sports gear warehouse account. You can login with your google account, facebook account, github account also. Also here you can add new item and see them in you private my items menu. Also you can see there customer review about this site. You can send any feedback for us. In inventory page you can see all the items of this warehouse site.
 
 ## Website's Features:
 

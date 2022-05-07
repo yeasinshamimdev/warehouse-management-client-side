@@ -43,8 +43,20 @@ const Login = () => {
 
     useEffect(() => {
         if (user || emailUser) {
-            navigate(from, { replace: true });
-            toast.success('Login successful')
+            fetch('https://whispering-garden-12680.herokuapp.com/login', {
+                method: 'POST',
+                body: JSON.stringify({ email: user?.email }),
+                headers: {
+                    'content-type': 'application/json'
+                }
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    localStorage.setItem('accessToken', data.token);
+                    navigate(from, { replace: true });
+                    toast.success('Login successful')
+                })
         }
 
         if (emailError) {

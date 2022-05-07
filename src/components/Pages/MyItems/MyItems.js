@@ -1,20 +1,48 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios'
 import auth from '../../../firebase.init';
 import useItems from '../../../hooks/useItems';
 import Spinner from '../../Shared/Spinner/Spinner';
 import UserItems from '../UserItems/UserItems';
+import { signOut } from 'firebase/auth';
 
 const MyItems = () => {
-    const [items] = useItems();
+    const [myItem, setMyItem] = useState([])
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
 
-    if (items.length === 0) {
+    useEffect(() => {
+
+        const getMyItem = async () => {
+            const email = user.email;
+            const url = `https://whispering-garden-12680.herokuapp.com/products?email=${email}`
+            try {
+                const { data } = await axios.get(url, {
+                    headers: {
+                        authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                    }
+                });
+                setMyItem(data);
+            }
+            catch (error) {
+                console.log(error);
+                if (error.response.status === 401 || error.response.status === 403) {
+                    signOut(auth);
+                    navigate('/login');
+                }
+            }
+        }
+        getMyItem()
+
+    }, [user, myItem])
+
+
+    if (myItem.length === 0) {
         return <Spinner />
     }
-    const filterUser = items?.filter(item => item?.email === user?.email);
+    const filterUser = myItem?.filter(item => item?.email === user?.email);
 
     return (
         <div className='my-6'>
