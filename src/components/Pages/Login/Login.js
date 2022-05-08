@@ -14,7 +14,7 @@ const Login = () => {
         emailLoading,
         emailError
     ] = useSignInWithEmailAndPassword(auth);
-    const [sendPasswordResetEmail, sending, resetError] = useSendPasswordResetEmail(auth);
+    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
 
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
@@ -52,10 +52,9 @@ const Login = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
-                    localStorage.setItem('accessToken', data.token);
                     navigate(from, { replace: true });
                     toast.success('Login successful')
+                    localStorage.setItem('accessToken', data.token);
                 })
         }
 
@@ -68,7 +67,7 @@ const Login = () => {
             }
         }
 
-    }, [emailError, user])
+    }, [emailError, user, emailUser])
 
     if (loading || emailLoading || sending) {
         return <Spinner />

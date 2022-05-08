@@ -3,12 +3,13 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import auth from '../../../firebase.init';
-import useItems from '../../../hooks/useItems';
-import Spinner from '../../Shared/Spinner/Spinner';
 import UserItems from '../UserItems/UserItems';
 import { signOut } from 'firebase/auth';
+import Spinner from '../../Shared/Spinner/Spinner';
+import useItems from '../../../hooks/useItems';
 
 const MyItems = () => {
+    const [items] = useItems();
     const [myItem, setMyItem] = useState([])
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
@@ -17,7 +18,7 @@ const MyItems = () => {
 
         const getMyItem = async () => {
             const email = user.email;
-            const url = `https://whispering-garden-12680.herokuapp.com/products?email=${email}`
+            const url = `https://whispering-garden-12680.herokuapp.com/myItems?email=${email}`
             try {
                 const { data } = await axios.get(url, {
                     headers: {
@@ -27,7 +28,6 @@ const MyItems = () => {
                 setMyItem(data);
             }
             catch (error) {
-                console.log(error);
                 if (error.response.status === 401 || error.response.status === 403) {
                     signOut(auth);
                     navigate('/login');
@@ -38,10 +38,10 @@ const MyItems = () => {
 
     }, [user, myItem])
 
-
-    if (myItem.length === 0) {
+    if (items.length === 0) {
         return <Spinner />
     }
+
     const filterUser = myItem?.filter(item => item?.email === user?.email);
 
     return (

@@ -8,8 +8,8 @@ import auth from '../../../firebase.init';
 import Spinner from '../../Shared/Spinner/Spinner';
 
 const SignUp = () => {
-    const [user, loading, error] = useAuthState(auth);
-    const [createUserWithEmailAndPassword, emailUser, emailLoading, emailError] = useCreateUserWithEmailAndPassword(auth, {
+    const [user, loading] = useAuthState(auth);
+    const [createUserWithEmailAndPassword, emailLoading, emailError] = useCreateUserWithEmailAndPassword(auth, {
         sendEmailVerification: true
     });
 
@@ -36,6 +36,17 @@ const SignUp = () => {
 
     useEffect(() => {
         if (user) {
+            fetch('https://whispering-garden-12680.herokuapp.com/login', {
+                method: 'POST',
+                body: JSON.stringify({ email: user?.email }),
+                headers: {
+                    'content-type': 'application/json'
+                }
+            })
+                .then(res => res.json())
+                .then(data => {
+                    localStorage.setItem('accessToken', data.token);
+                })
             navigate(from, { replace: true });
             toast.success('User created successful');
         }
@@ -45,7 +56,7 @@ const SignUp = () => {
         if (emailError?.message === 'Firebase: Error (auth/invalid-email).') {
             toast.error('Invalid email');
         }
-    })
+    }, [user, emailError])
 
     if (loading || emailLoading) {
         return <Spinner />
